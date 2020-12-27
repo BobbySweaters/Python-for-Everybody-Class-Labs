@@ -1,6 +1,8 @@
 #example indefinite loop. Loops (repeated steps) have iterations variables that change each time through a loop.
 # Often iteration variables go through a sequence of numbers. "While"loops are the term for infinite loops
 
+# https://www.py4e.com/html3/05-iterations
+
 n = 5
 while n >0:
     print(n)
