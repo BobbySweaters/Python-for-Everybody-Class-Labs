@@ -37,5 +37,5 @@ print(purse['candy'])
 purse['candy'] = purse['candy'] + 2
 print(purse)
 
-#! Dictionaries are like lists expect they use keys instead of nimbers to look up values
+#! Dictionaries are like lists expect they use keys instead of numbers to look up values
 
