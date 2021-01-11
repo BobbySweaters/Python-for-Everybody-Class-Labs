@@ -12,8 +12,9 @@
 import urllib.request
 
 fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
-for line in fhand:
-    print(line.decode().strip())
+for line in fhand: #this for loop will look through each line of data
+    print(line.decode().strip()) #line is a bite array, but decode turns it into a string. Strip then separates
+    # takes out the extra 
 print()
 
 #! As an example, we can write a program to retrieve the data for romeo.txt and compute the 
