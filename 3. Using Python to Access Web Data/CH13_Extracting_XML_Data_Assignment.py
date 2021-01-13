@@ -15,18 +15,29 @@
 
 
 import urllib.request, urllib.parse, urllib.error
-import xml.etree.ElementTree as ET
-sum = 0
-
-address = input('Enter location: ')
-xml = urllib.request.urlopen(address)
-data = xml.read()
-tree = ET.fromstring(data)
+import ssl
+import json
 
 
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
-for count in tree.findall('comments/comment'):
-    rank = int(count.find('count').text)
-    sum = sum + rank
+while True:
+    count = sum = 0
+    url = input('Enter location: ')
+    if len(url) < 1: break
+    print('Retrieving', url)
+    uh = urllib.request.urlopen(url, context=ctx)
+    
+    data = uh.read()
+    print('Retrieved', len(data), 'characters')
+    
+    info = json.loads(data)
 
-print(sum) 
+    for item in info['comments']:
+        count+=1
+        sum+=int(item['count'])
+    
+    print('count:',count)
+    print('sum',sum)
